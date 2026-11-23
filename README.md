@@ -1,32 +1,18 @@
-# React + TypeScript + Vite
+# Doc Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small documentation portal built to explore how a DITA-style content delivery app could work in the browser. Users search a set of help topics, narrow them with product filters, and read a topic with its content rendered from XML.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Debounced search over topic titles
+- Faceted filtering by product (checkboxes); no selection means no filtering
+- Result count announced to screen readers through a live region
+- Topic detail panel that renders DITA-like XML into React elements
+- A reusable `<doc-callout>` web component built with Lit
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- React and TypeScript, bundled with Vite
+- Lit for the web component
+- Vitest and React Testing Library for tests
+- Plain CSS, with no UI library
