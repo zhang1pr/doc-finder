@@ -1,6 +1,12 @@
-type Props = { value: string; onChange: (value: string) => void };
+type Props = { 
+  value: string; 
+  onChange: (value: string) => void 
+};
 
-export function SearchBar({ value, onChange }: Props) {
+export function SearchBar({ 
+  value, 
+  onChange 
+}: Props) {
   return (
     <div>
       <label htmlFor="search">Search topics</label>

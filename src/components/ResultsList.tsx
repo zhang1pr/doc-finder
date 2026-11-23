@@ -6,8 +6,14 @@ type Props = {
   onSelect: (id: string) => void;
 };
 
-export function ResultsList({ topics, selectedId, onSelect }: Props) {
-  if (topics.length === 0) return <p>No topics match your search.</p>;
+export function ResultsList({ 
+  topics, 
+  selectedId, 
+  onSelect 
+}: Props) {
+  if (topics.length === 0) {
+    return <p>No topics match your search.</p>;
+  }
 
   return (
     <ul>

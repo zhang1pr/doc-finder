@@ -9,8 +9,10 @@ export function TopicPanel({ topic }: { topic?: Topic }) {
     headingRef.current?.focus();
   }, [topic?.id]);
 
-  if (!topic) return <p>Select a topic.</p>;
-
+  if (!topic) {
+    return <p>Select a topic.</p>;
+  }
+  
   return (
     <article>
       <h2 ref={headingRef} tabIndex={-1}>{topic.title}</h2>

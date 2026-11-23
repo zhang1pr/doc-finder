@@ -29,9 +29,9 @@ export default function App() {
         </aside>
   
         <section className="results" aria-label="Results">
-        <p className="status" role="status" aria-live="polite">
-          {loading ? 'Loading…' : countText}
-        </p>
+          <p className="status" role="status" aria-live="polite">
+            {loading ? 'Loading…' : countText}
+          </p>
           {error && <p role="alert" className="error">{error}</p>}
           <ResultsList topics={data} selectedId={selectedId} onSelect={setSelectedId} />
         </section>

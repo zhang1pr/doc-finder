@@ -1,35 +1,61 @@
-import { useEffect, useState } from 'react';
+import { 
+  useEffect, 
+  useState 
+} from 'react';
 import { getTopics } from '../api';
-import type { Product, Topic } from '../types';
+import type { 
+  Product, 
+  Topic 
+} from '../types';
 
-export function useTopics(query: string, products: Product[]) {
-  const [data, setData] = useState<Topic[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+type State = { 
+  key: string; 
+  data: Topic[]; 
+  error: string | null 
+};
+
+export function useTopics(
+  query: string, 
+  products: Product[]
+) {
+  const key = JSON.stringify([query, products]);
+  const [state, setState] = useState<State>({ 
+    key: '',
+    data: [], 
+    error: null
+  });
 
   useEffect(() => {
     const controller = new AbortController();
-    setLoading(true);
-    setError(null);
 
     const timer = setTimeout(() => {
       getTopics(query, products, controller.signal)
-        .then(result => {
-          setData(result);
-          setLoading(false);
-        })
+        .then(data => setState({ 
+          key, 
+          data, 
+          error: null 
+        }))
         .catch(err => {
           if (err.name === 'AbortError') return;
-          setError('Could not load topics.');
-          setLoading(false);
+          setState({ 
+            key, 
+            data: [], 
+            error: 'Could not load topics.' 
+          });
         });
-    }, 250);
+    }, 200);
 
     return () => {
       clearTimeout(timer);
       controller.abort();
     };
-  }, [query, products]);
+  }, [key, query, products]);
 
-  return { data, loading, error };
+  const loading = state.key !== key;
+
+  return {
+    data: state.data,
+    loading,
+    error: loading ? null : state.error,
+  };
 }
