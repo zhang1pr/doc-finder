@@ -5,7 +5,10 @@ type Props = {
   onChange: (value: string) => void 
 };
 
-export function SearchBar({ value, onChange }: Props) {
+export function SearchBar({ 
+  value, 
+  onChange 
+}: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const clear = () => {
