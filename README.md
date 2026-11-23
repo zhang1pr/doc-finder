@@ -9,6 +9,7 @@ A small documentation portal built to explore how a DITA-style content delivery 
 - Result count announced to screen readers through a live region
 - Topic detail panel that renders DITA-like XML into React elements
 - A reusable `<doc-callout>` web component built with Lit
+- Mock REST-style API with simulated latency and request cancellation
 
 ## Tech stack
 
@@ -16,3 +17,13 @@ A small documentation portal built to explore how a DITA-style content delivery 
 - Lit for the web component
 - Vitest and React Testing Library for tests
 - Plain CSS, with no UI library
+
+## Getting started
+
+```bash
+npm install
+npm run dev      # start the dev server
+npm test         # run tests in watch mode
+npm test -- --run   # run tests once
+npm run build    # production build
+```
